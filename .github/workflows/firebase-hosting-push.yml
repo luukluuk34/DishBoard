@@ -2,8 +2,11 @@ name: ci-cd
 
 on:
   push:
+    branches:
+      - main
   pull_request:
-    branches: [master]
+    branches: 
+      - main
 
 jobs:
   unit-tests:
