@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { TempUsers,users } from 'src/tempData';
+import { UserService } from '../user.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,9 +13,9 @@ import { TempUsers,users } from 'src/tempData';
 })
 export class UserDetailComponent implements OnInit {
   //userId: string | null = null;
-  user : TempUsers | undefined;
+  user : User | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private userService : UserService) { }
 
   ngOnInit(): void {
     //statisch
@@ -22,12 +23,8 @@ export class UserDetailComponent implements OnInit {
     //niet statisch
 
     this.route.paramMap.subscribe(params => { 
-      //this.userId = params.get('id');
-      this.user = users.find(u => u.id === Number(params.get('id')));
+      this.user = this.userService.getUserById(Number(params.get("id")));
     });
-
-    //var n : number = Number(this.userId);
-    //this.name = this.nameArray[n -1]; 
   }
 
 }

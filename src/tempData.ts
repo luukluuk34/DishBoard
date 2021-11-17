@@ -23,6 +23,12 @@ export interface TempUsers {
       name: 'Laura',
       age: 32,
       dateofbirth: '28-11-1989'
+    },
+    {
+      id: 4 ,
+      name: 'Wessel',
+      age: 18,
+      dateofbirth: '26-06-2003'
     }
   
   ];
