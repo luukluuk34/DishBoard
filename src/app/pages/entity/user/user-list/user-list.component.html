@@ -1,4 +1,11 @@
 <p>user-list works!</p>
- <div *ngFor="let user of users">
-     <a routerLink="{{user.id}}">{{user.firstName}} {{user.lastName}}</a>
-</div>
+<table>
+    <tr>
+        <th>firstname</th>
+        <th>lastname</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td><a routerLink="{{user.id}}">{{user.firstName}}</a></td>
+        <td><a routerLink="{{user.id}}">{{user.lastName}}</a></td>
+    </tr>
+</table>

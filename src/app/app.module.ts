@@ -13,6 +13,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-
     AppRoutingModule,
     RouterModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

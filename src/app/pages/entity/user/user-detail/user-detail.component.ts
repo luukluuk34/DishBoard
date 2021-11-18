@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from '../user.service';
@@ -21,7 +21,6 @@ export class UserDetailComponent implements OnInit {
     //statisch
     //this.userId = this.route.snapshot.paramMap.get('id');
     //niet statisch
-
     this.route.paramMap.subscribe(params => { 
       this.user = this.userService.getUserById(Number(params.get("id")));
     });

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { User, UserRole } from "./user.model";
+import { EmailValidator } from "@angular/forms";
+import { User, UserGender, UserRole } from "./user.model";
 
 @Injectable({
     providedIn: "root",
@@ -12,6 +13,7 @@ export class UserService {
       firstName: "Luuk",
       lastName: "Bartels",
       email: "luuk-bartels@hotmail.com",
+      gender: UserGender.male,
       role : UserRole.admin
     },
     {
@@ -19,6 +21,7 @@ export class UserService {
       firstName: "Marit",
       lastName: "Bartels",
       email: "Marit-bartels@hotmail.com",
+      gender: UserGender.female,
       role: UserRole.editor
     },
     {
@@ -26,6 +29,7 @@ export class UserService {
       firstName: "Laura",
       lastName: "Bartels",
       email: "Laura-bartels@hotmail.com",
+      gender: UserGender.female,
       role: UserRole.editor
     },
     {
@@ -33,6 +37,7 @@ export class UserService {
       firstName: "Wessel",
       lastName: "Kuijstermans",
       email: "Wessel-Kuijstermans@hotmail.com",
+      gender: UserGender.male,
       role: UserRole.guest
     }
     ];
@@ -48,6 +53,14 @@ export class UserService {
       getUserById(id: number): User {
         console.log('getUserById aangeroepen');
         return this.users.filter((user) => user.id === id)[0];
+      }
+      addUser(user:User){
+        console.log("AddUser", user)
+        user.id = this.users.length;
+        this.users.push(user);
+      }
+      updateUser(user:User){
+        this.users[user.id] = user;
       }
     
 }
