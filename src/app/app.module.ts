@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserListComponent,
     UserDetailComponent,
     UserEditComponent,
-    UserInterfaceComponent
+    UserInterfaceComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,9 +13,11 @@ import { User } from '../user.model';
 })
 export class UserDetailComponent implements OnInit {
   //userId: string | null = null;
-  user : User | undefined;
+  user : User;
 
-  constructor(private route: ActivatedRoute, private userService : UserService) { }
+  constructor(private route: ActivatedRoute, private userService : UserService) { 
+    this.user = new User();
+  }
 
   ngOnInit(): void {
     //statisch

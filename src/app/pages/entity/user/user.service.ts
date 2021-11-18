@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { EmailValidator } from "@angular/forms";
+import { BehaviorSubject } from "rxjs";
 import { User, UserGender, UserRole } from "./user.model";
 
 @Injectable({
@@ -41,6 +42,8 @@ export class UserService {
       role: UserRole.guest
     }
     ];
+    userSelected = new BehaviorSubject<User>(new User(0,"","","",UserGender.unknown));
+
     constructor() {
         console.log('Service constructor aangeroepen');
       }
@@ -55,12 +58,21 @@ export class UserService {
         return this.users.filter((user) => user.id === id)[0];
       }
       addUser(user:User){
-        console.log("AddUser", user)
-        user.id = this.users.length;
+        console.log("AddUser", user);
+        user.id = this.users.length + 1;
+        console.log("New User Id", user.id);
         this.users.push(user);
       }
       updateUser(user:User){
-        this.users[user.id] = user;
+        console.log("UpdateUser",user.id);
+        this.users[user.id - 1] = user;
+      }
+      deleteUser(id:number){
+        console.log("Deleting User");
+        this.users.forEach((element,index)=> {
+          if(element.id==id) this.users.splice(index,1);
+        });
+        
       }
     
 }

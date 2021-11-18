@@ -12,13 +12,12 @@ export enum UserGender {
     unknown = "unknown"
 }
 
-
 export class User {
-    id: number = 0;
-    firstName: string = "";
-    lastName: string = "";
-    email: string = "";
-    gender: UserGender = UserGender.unknown;
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: UserGender;
     role: UserRole = UserRole.guest;
     
     constructor(id = 0,firstName = "", lastName = "", email = "", gender = UserGender.unknown){
