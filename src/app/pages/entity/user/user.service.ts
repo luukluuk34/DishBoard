@@ -59,7 +59,9 @@ export class UserService {
       }
       addUser(user:User){
         console.log("AddUser", user);
-        user.id = this.users.length + 1;
+        const tempUser = this.users[this.users.length - 1];
+        const tempId:number = tempUser?.id ?? 0;
+        user.id = tempId + 1;
         console.log("New User Id", user.id);
         this.users.push(user);
       }
