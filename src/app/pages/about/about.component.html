@@ -1,0 +1,95 @@
+<h1>About DishBoard</h1>
+
+<p>Dishboard is a recipe website where a user can upload their own recipe or can search for a recipe for his or hers own use.</p>
+<p>On this page we go in detail about all the entities that are used in this project and all the <b>features/pages</b> that are going to be possibile in the web application.</p>
+
+<div>
+<h3>User</h3>
+    <p>
+        A user makes an account by entering his or hers first name, last name, email and date of birth.
+        <br/>After this a user can write about him/her self to give a bit more personal flair to the profile.
+        <br/>A user can make a recipe on the website and it will be automatically added to their profile and uploaded on the website.
+        <br/>A user can also save recipes that he or she likes so it is easily available for use.
+    </p>
+</div>
+<div>
+    <h3>Recipe</h3>
+    <p>
+        If a user wants to make a recipe they need to give it the following properties: 
+        <br/>- Name of the recipes, 
+        <br/>- Time in minutes,
+        <br/>- For how many people the recipe is indicated by a number,
+        <br/>- List of ingredients (see ingredients how an ingredient is build),
+        <br/>- Total Nutrition calculated by the different ingredients nutrition,
+        <br/>- Description on how to prepare and make the meal,
+        <br/>- Optionally a user can give tips.
+        <br/><br/>
+        A recipe needs to have atleast 3 ingredients to make it. 
+        <br/>Total nutriton of each nutrition value cannot be calculated if one or more ingredients does not have the nutrition value filled in by the user.
+    </p>
+</div>
+<div>
+    <h3>Ingredient</h3>
+    <p>
+        An ingredient has name, amount determined by an enum value, Nutrition value (see nutrition value on how it is made).
+        <br/> If you want to fill in a value you need to select a type of weight and add the appropiate amount of it for the recipe.
+    </p>
+</div>
+<div>
+    <h3>Nutrition Value</h3>
+    <p>
+        In order to fill in the total nutritional value for an ingredient a user needs to fill in the following properties:
+        <br/>-Calories
+        <br/>-Carbohydrates
+        <br/>-Sodium
+        <br/>-Protein
+        <br/>-Fat
+        <br/>-Fiber
+        <br/>A user does <b>not need</b> to fill in all the nutritional values because sometimes the data is not available for the user. However this means the recipe does not calculate the total nutritional values.
+
+    </p>
+</div>
+
+<div style="border-style: solid; border-color:black; border:2; padding-left: 30px;">
+    <h4>List of entities with its attributes</h4>
+    <div class="row">
+        <ul class="col">
+            <li><b>User</b></li>
+            <li>FirstName</li>
+            <li>LastName</li>
+            <li>Email</li>
+            <li>About</li>
+            <li>Date of birth</li>
+            <li>Saved Recipes</li>
+            <li>Made Recipes</li>
+        </ul>
+        <ul class="col">
+            <li><b>Recipe</b></li>
+            <li>Name</li>
+            <li>Time</li>
+            <li>For how many people</li>
+            <li>What you need in the kitchen</li>
+            <li>List of ingredients</li>
+            <li>Total Nutrition</li>
+            <li>How to make the meal</li>
+            <li>Tips</li>
+        </ul>
+        <ul class="col">
+            <li><b>Ingredient</b></li>
+            <li>Name</li>
+            <li>Amount</li>
+            <li>Nutrtion value</li>
+        </ul>
+        <ul class="col">
+            <li><b>Nutrition value</b></li>
+            <li>Calories</li>
+            <li>Carbohydrates</li>
+            <li>Sodium</li>
+            <li>Protein</li>
+            <li>Fat</li>
+            <li>Fiber</li>
+        </ul>
+    </div>
+</div>
+<div class="pt-5"></div>
+<div class="pt-5"></div>

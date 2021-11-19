@@ -1,7 +1,7 @@
 <p>user-edit works!</p>
 <form [formGroup]="addUserForm" class="form" (ngSubmit)="onSubmit()" >
     <label for="firstName">First Name:</label>
-    <input formControlName="firstName" minlength="2" required id="firstName" type="text" class="form-control"  placeholder="Your first name" >
+    <input formControlName="firstName" minlength="2" required id="firstName" type="text" class="form-control"  placeholder="Your first name" [(ngModel)]="user.firstName">
     <div *ngIf="addUserForm.controls['firstName'].invalid && (addUserForm.controls['firstName'].dirty || addUserForm.controls['firstName'].touched)">
         <div *ngIf="addUserForm.controls['firstName'].invalid" class="alert" style="color:red;">
             Please enter First name
@@ -18,7 +18,7 @@
 
     <br/>
     <label for="emailInput">Email:</label>
-    <input formControlName="email" minlength="4" id="emailInput" type="email" class="form-control" placeholder="Your email">
+    <input formControlName="email" minlength="4" id="emailInput" type="email" class="form-control" placeholder="Your email" >
     <div *ngIf="addUserForm.controls['email'].invalid && (addUserForm.controls['email'].dirty || addUserForm.controls['email'].touched)">
         <div *ngIf="addUserForm.controls['email'].invalid" class="alert" style="color:red;">
             Please enter email
