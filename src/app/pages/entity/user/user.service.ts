@@ -38,11 +38,19 @@ export class UserService {
       firstName: "Wessel",
       lastName: "Kuijstermans",
       email: "Wessel-Kuijstermans@hotmail.com",
+      gender: UserGender.x,
+      role: UserRole.guest
+    },
+    {
+      id: 5 ,
+      firstName: "Mart",
+      lastName: "Van Holten",
+      email: "Mart-holten@hotmail.com",
       gender: UserGender.male,
       role: UserRole.guest
     }
     ];
-    userSelected = new BehaviorSubject<User>(new User(0,"","","",UserGender.unknown));
+    userSelected = new BehaviorSubject<User>(new User(0,"","","",UserGender.ratherNotSay));
 
     constructor() {
         console.log('Service constructor aangeroepen');

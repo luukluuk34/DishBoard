@@ -18,7 +18,7 @@ export class UserEditComponent implements OnInit {
   public genders = Object.values(UserGender);
 
   constructor(private userService:UserService, private router: Router, private route:ActivatedRoute) { 
-    this.user = new User(0,"","","",UserGender.unknown);
+    this.user = new User(0,"","","",UserGender.ratherNotSay);
     this.id="0";
   }
 
@@ -55,7 +55,7 @@ export class UserEditComponent implements OnInit {
 
     if(this.id === '0'){
       console.log("add")
-      this.user = new User(0,"","","",UserGender.unknown);
+      this.user = new User(0,"","","",UserGender.ratherNotSay);
     }else{
       this.userService.userSelected.subscribe(res => {
         console.log("CurrentID", this.id);

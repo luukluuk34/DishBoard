@@ -9,7 +9,7 @@ export enum UserGender {
     male = "male",
     female = "female",
     x = "x",
-    unknown = "unknown"
+    ratherNotSay = "ratherNotSay"
 }
 
 export class User {
@@ -20,7 +20,7 @@ export class User {
     gender: UserGender;
     role: UserRole = UserRole.guest;
     
-    constructor(id = 0,firstName = "", lastName = "", email = "", gender = UserGender.unknown){
+    constructor(id = 0,firstName = "", lastName = "", email = "", gender = UserGender.ratherNotSay){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
