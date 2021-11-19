@@ -14,6 +14,7 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserDetailComponent,
     UserEditComponent,
     UserInterfaceComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
