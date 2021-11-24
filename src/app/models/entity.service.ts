@@ -19,9 +19,24 @@ export class EntityService<T extends Entity> {
                              .pipe(tap(console.log), catchError(this.handleError));
         }
 
-        public getById(_id: number,params?: HttpParams) : Observable<T>{
-            const endpoint = `${this.url}${this.endpoint}`;
+        public getById(_id: string | null,params?: HttpParams) : Observable<T>{
+            const endpoint = `${this.url}${this.endpoint}/${_id}`;
             console.log(`_id ${endpoint} params = ${params}`);
+            return this.http.get<T>(endpoint)
+                            .pipe(tap(console.log), catchError(this.handleError));
+        }
+
+        public delete(_id:string|null, params?:HttpParams) : Observable<T>{
+            const endpoint = `${this.url}${this.endpoint}/${_id}`;
+            console.log(`delete ${endpoint} params = ${params}`);
+            return this.http.delete<T>(endpoint).pipe(tap(console.log),catchError(this.handleError));
+        }
+
+        public create(param:T, params?:HttpParams): Observable<T> {
+            const endpoint = `${this.url}${this.endpoint}`;
+            
+            console.log(`create ${this.endpoint} params = ${params}, object =`,param);
+            return this.http.post<T>(endpoint, param).pipe(tap(console.log),catchError(this.handleError));
         }
 
         public handleError(error: HttpErrorResponse) {

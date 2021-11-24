@@ -25,6 +25,21 @@
         </div>
     </div>
     <br/>
+    <label for="aboutInput">About:</label>
+    <textarea formControlName="about" id="aboutInput" type="text" class="form-control" placeholder="About you"></textarea>
+    <div *ngIf="addUserForm.controls['about'].invalid && (addUserForm.controls['about'].dirty || addUserForm.controls['about'].touched)">
+        <div *ngIf="addUserForm.controls['about'].invalid" class="alert" style="color:red;">
+            Please enter about page
+        </div>
+    </div>
+    <br/>
+    <label for="dateOfBirthInput">dateOfBirth:</label>
+    <input formControlName="dateOfBirth" id="dateOfBirthInput" type="dateOfBirth" class="form-control" placeholder="0000-00-00">
+    <div *ngIf="addUserForm.controls['dateOfBirth'].invalid && (addUserForm.controls['dateOfBirth'].dirty || addUserForm.controls['dateOfBirth'].touched)">
+        <div *ngIf="addUserForm.controls['dateOfBirth'].invalid" class="alert" style="color:red;">
+            Please enter your age.
+        </div>
+    </div>
     <br/>
     <a routerLink="/user-list"><button type="submit" class="btn btn-success" [disabled]="addUserForm.invalid" (click)="onSubmit()">Save</button></a>
   </form>

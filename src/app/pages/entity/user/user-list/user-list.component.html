@@ -7,7 +7,7 @@
     <tr *ngFor="let user of userList">
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
-        <td><a routerLink="{{user}}"class="btn btn-primary">Details</a></td>
-        <td><a (click)="deleteUser(0)" class="btn btn-danger" >Delete</a></td>
+        <td><a routerLink="{{user._id}}"class="btn btn-primary">Details</a></td>
+        <td><a #user (click)="deleteUser(user._id)" class="btn btn-danger" >Delete</a></td>
     </tr>
 </table>

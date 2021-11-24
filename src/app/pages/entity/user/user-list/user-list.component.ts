@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../models/user.service';
 import { User } from '../../../../models/user.model';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -12,21 +12,17 @@ import { Observable } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
 
-  //users$: Observable<User[]| null> | undefined;
   userList: User[] = [];
-  constructor(private userService: UserService) { 
-    console.log("test", this.userService.getList().subscribe((results) => this.userList = results));
-    console.log("test",this.userList);
+  constructor(private route :ActivatedRoute, private router:Router, private userService: UserService, ) { 
+    console.log("GetList", this.userService.getList().subscribe((results) => this.userList = results));
   }
 
   ngOnInit(): void {
-    //this.users$ = this.userService.getList();
-    
-    
-    //this.users$.subscribe((results: User[]) => this.userList = results);
-    //console.log("user-list",this.users$);
+
   }
-  deleteUser(id:number){
-    //this.userService.deleteUser(id);
+  deleteUser(_id:any){
+    console.log("_id", _id)
+    console.log("Delete User", this.userService.delete(_id).subscribe()); 
+    this.userList = this.userList.filter(user => user._id !== _id);
   }
 }

@@ -2,29 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { UserService } from '../user.service';
+import { UserService } from '../../../../models/user.service';
 import { User } from '../../../../models/user.model';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
+  providers:[UserService],
   styles: [
   ]
 })
 export class UserDetailComponent implements OnInit {
-  //userId: string | null = null;
   user : User;
+  _id : string | null;
 
   constructor(private route: ActivatedRoute, private userService : UserService) { 
     this.user = new User();
+    this._id = "";
   }
 
   ngOnInit(): void {
-    //statisch
-    //this.userId = this.route.snapshot.paramMap.get('id');
-    //niet statisch
+    
     this.route.paramMap.subscribe(params => { 
-      this.user = this.userService.getUserById(Number(params.get("id")));
+      this._id = params.get("id") ;
+      console.log("test", this.userService.getById(this._id).subscribe((result) => this.user = result));
     });
   }
 
