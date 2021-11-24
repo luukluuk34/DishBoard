@@ -24,16 +24,6 @@
             Please enter email
         </div>
     </div>
-
-    <br/>
-    <label for="genderInput">Gender: </label>
-    <br/>
-    <select formControlName="gender" id="genderInput" name="gender">
-        <option class="dropdown-item" selected="selected" disabled>Choose...</option>
-        <option class="dropdown-item" *ngFor="let gender of genders" [value]="gender">
-            {{gender}}
-        </option>
-    </select>
     <br/>
     <br/>
     <a routerLink="/user-list"><button type="submit" class="btn btn-success" [disabled]="addUserForm.invalid" (click)="onSubmit()">Save</button></a>

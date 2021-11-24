@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from '../user.service';
-import { User } from '../user.model';
+import { User } from '../../../../models/user.model';
 
 @Component({
   selector: 'app-user-detail',

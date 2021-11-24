@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  url: "Localhost:4200"
+  url: "Localhost:4200",
+  API_BASE_URL: "http://localhost:3000"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

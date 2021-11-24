@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about/about.component';
+import { EntityService } from './models/entity.service';
+import { UserService } from './models/user.service';
 
 @NgModule({
   declarations: [
@@ -36,8 +39,12 @@ import { AboutComponent } from './pages/about/about.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: EntityService,
+    useClass: UserService
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
