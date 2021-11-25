@@ -1,7 +1,7 @@
 import { Entity } from "./entity.model";
 import { HttpClient, HttpParams,HttpErrorResponse } from '@angular/common/http'
 import { catchError, Observable,throwError, map, tap } from "rxjs";
-import { User } from "./user.model";
+import { User } from "../pages/entity/user/user.model";
 
 export class EntityService<T extends Entity> {
     user:User[] = [];
@@ -19,7 +19,7 @@ export class EntityService<T extends Entity> {
                              .pipe(tap(console.log), catchError(this.handleError));
         }
 
-        public getById(_id: string | null,params?: HttpParams) : Observable<T>{
+        public getById(_id: string | number | null | undefined,params?: HttpParams) : Observable<T>{
             const endpoint = `${this.url}${this.endpoint}/${_id}`;
             console.log(`_id ${endpoint} params = ${params}`);
             return this.http.get<T>(endpoint)

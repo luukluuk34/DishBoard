@@ -17,7 +17,7 @@ import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about/about.component';
 import { EntityService } from './models/entity.service';
-import { UserService } from './models/user.service';
+import { UserService } from './pages/entity/user/user.service';
 
 @NgModule({
   declarations: [

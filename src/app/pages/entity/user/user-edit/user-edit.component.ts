@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { User, UserRole } from '../../../../models/user.model';
-import { UserService } from '../../../../models/user.service';
+import { User, UserRole } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -37,7 +37,7 @@ export class UserEditComponent implements OnInit {
       console.log('Adding user', this.addUserForm.value);
       this.userService.create(this.addUserForm.value).subscribe();
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/user-list']);
   }
 
   ngOnInit(): void {    
