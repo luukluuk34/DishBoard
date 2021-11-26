@@ -16,7 +16,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about/about.component';
-import { EntityService } from './models/entity.service';
+import { EntityService } from './core/common/entity.service';
 import { UserService } from './pages/entity/user/user.service';
 
 @NgModule({

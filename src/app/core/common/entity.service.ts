@@ -1,7 +1,7 @@
 import { Entity } from "./entity.model";
 import { HttpClient, HttpParams,HttpErrorResponse } from '@angular/common/http'
 import { catchError, Observable,throwError, map, tap } from "rxjs";
-import { User } from "../pages/entity/user/user.model";
+import { User } from "../../pages/entity/user/user.model";
 
 export class EntityService<T extends Entity> {
     user:User[] = [];

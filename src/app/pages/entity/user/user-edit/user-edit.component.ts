@@ -15,11 +15,10 @@ import { UserService } from '../user.service';
 export class UserEditComponent implements OnInit {
   user: User;
   addUserForm!:FormGroup;
-  id:String;
+  id:string| null | undefined;
 
   constructor(private userService:UserService, private router: Router, private route:ActivatedRoute) { 
     this.user = new User();
-    this.id="";
   }
 
   onSubmit(): void {
@@ -32,7 +31,8 @@ export class UserEditComponent implements OnInit {
       this.user.firstName = this.addUserForm.get('firstName')?.value;
       this.user.lastName = this.addUserForm.get('lastName')?.value;
       this.user.email = this.addUserForm.get('email')?.value;
-      //this.userService.updateUser(this.user);
+      this.user.about = this.addUserForm.get('about')?.value;
+      this.user.dateOfBirth = this.addUserForm.get('dateOfBirth')?.value;
     }else{
       console.log('Adding user', this.addUserForm.value);
       this.userService.create(this.addUserForm.value).subscribe();
@@ -41,6 +41,15 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {    
+    this.route.params.subscribe(paramId => {
+      this.id = paramId['id'] ?? '0';
+    });
+    if(this.id === '0'){
+      console.log("add")
+    }else{
+      console.log("update", this.userService.getById(this.id).subscribe((result) => this.user = result));
+     }
+
     this.addUserForm = new FormGroup({
       firstName: new FormControl(this.user?.firstName, Validators.required),
       lastName : new FormControl(this.user?.lastName,Validators.required),
@@ -48,23 +57,7 @@ export class UserEditComponent implements OnInit {
       about: new FormControl(this.user?.about),
       dateOfBirth: new FormControl(this.user?.dateOfBirth, Validators.required)
     })
-
-    this.route.params.subscribe(paramId => {
-      this.id = paramId['id'] ?? '0';
-    });
-
-    if(this.id === '0'){
-      console.log("add")
-      //this.user = new User(0,"","","");
-    }else{
-    //   this.userService.userSelected.subscribe(res => {
-    //     console.log("CurrentID", this.id);
-    //     console.log("Updated", res);
-    //     this.user = res;
-    //    // this.user._id = Number(this.id);
-    //     console.log("User", this.user)
-    //   });
-     }
+    console.log(this.addUserForm);
   }
 
 }
