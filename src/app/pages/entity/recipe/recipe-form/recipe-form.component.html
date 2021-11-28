@@ -1,0 +1,33 @@
+<p>recipe-form works!</p>
+<form class="form" (ngSubmit)="onSubmit()"  [formGroup]="addRecipeForm">
+    <label for="name">Name</label>
+    <input class="form-control" formControlName="name" [(ngModel)]="recipe!.name">
+
+    <label for="time">Time</label>
+    <input type="number" class="form-control" formControlName="time" [(ngModel)]="recipe!.time">
+
+    <label for="forAmountOfPeople">For how many people</label>
+    <input type="number" class="form-control" formControlName="forAmountOfPeople" [(ngModel)]="recipe!.forAmountOfPeople">
+
+    <label for="description">Description</label>
+    <div formArrayName="description">
+        <div *ngFor="let d of description().controls; index as numb"> 
+            Step: {{numb + 1}}
+        <textarea type="text" class="form-control" [formControlName]='numb' [(ngModel)]="recipe!.description"></textarea>
+        </div>
+        <button (click)="deleteDescription(index)" class="btn btn-danger">-</button> 
+    </div>
+    <br>
+    <button (click)="addDescription()" class="btn btn-secondary">+</button>
+    
+    <br>
+    <br>
+    <label for="tips">Tips</label>
+    <input class="form-control" formControlName="tips" [(ngModel)]="recipe!.tips">
+
+    <label for="imgUrl">img Url</label>
+    <input class="form-control" formControlName="imgUrl" [(ngModel)]="recipe!.imgUrl">
+    <br>
+    <button type="submit" class="btn btn-success" [disabled]="addRecipeForm.invalid">Save</button>
+
+</form>

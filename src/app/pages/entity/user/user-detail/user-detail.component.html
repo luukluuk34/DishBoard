@@ -1,6 +1,8 @@
 <div *ngIf="user">
-    <h2>Detail: {{user.firstName}} {{user.lastName}}</h2>
+    <h2>Fullname: {{user.firstName}} {{user.lastName}}</h2>
     <h3>Email: {{user.email}}</h3>
+    <h3>About: {{user.about}}</h3>
+    <h4>Date of birth: {{user.dateOfBirth}}</h4>
     <a routerLink="/user-edit/{{user._id}}">Edit profile</a>
 </div>
 

@@ -18,6 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about/about.component';
 import { EntityService } from './core/common/entity.service';
 import { UserService } from './pages/entity/user/user.service';
+import { RecipeListComponent } from './pages/entity/recipe/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recipe-detail.component';
+import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
+import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
+import { RecipeService } from './pages/entity/recipe/recipe.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,10 @@ import { UserService } from './pages/entity/user/user.service';
     UserEditComponent,
     UserInterfaceComponent,
     AboutComponent,
+    RecipeListComponent,
+    RecipeDetailComponent,
+    RecipeFormComponent,
+    RecipeInterfaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +53,10 @@ import { UserService } from './pages/entity/user/user.service';
   providers: [{
     provide: EntityService,
     useClass: UserService
+  },
+  {
+    provide:EntityService,
+    useClass:RecipeService
   }],
   bootstrap: [AppComponent]
 })

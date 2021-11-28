@@ -15,7 +15,7 @@ import { UserService } from '../user.service';
 export class UserEditComponent implements OnInit {
   user: User;
   addUserForm!:FormGroup;
-  id:string| null | undefined;
+  _id:string| null | undefined;
 
   constructor(private userService:UserService, private router: Router, private route:ActivatedRoute) { 
     this.user = new User();
@@ -42,12 +42,12 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit(): void {    
     this.route.params.subscribe(paramId => {
-      this.id = paramId['id'] ?? '0';
+      this._id = paramId['id'] ?? '0';
     });
-    if(this.id === '0'){
+    if(this._id === '0'){
       console.log("add")
     }else{
-      console.log("update", this.userService.getById(this.id).subscribe((result) => this.user = result));
+      console.log("update", this.userService.getById(this._id).subscribe((result) => this.user = result));
      }
 
     this.addUserForm = new FormGroup({
@@ -57,7 +57,6 @@ export class UserEditComponent implements OnInit {
       about: new FormControl(this.user?.about),
       dateOfBirth: new FormControl(this.user?.dateOfBirth, Validators.required)
     })
-    console.log(this.addUserForm);
   }
 
 }

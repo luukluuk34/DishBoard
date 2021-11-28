@@ -1,10 +1,8 @@
 import { Entity } from "./entity.model";
 import { HttpClient, HttpParams,HttpErrorResponse } from '@angular/common/http'
 import { catchError, Observable,throwError, map, tap } from "rxjs";
-import { User } from "../../pages/entity/user/user.model";
 
 export class EntityService<T extends Entity> {
-    user:User[] = [];
 
     constructor(
         protected readonly http: HttpClient,
@@ -34,7 +32,6 @@ export class EntityService<T extends Entity> {
 
         public create(param:T, params?:HttpParams): Observable<T> {
             const endpoint = `${this.url}${this.endpoint}`;
-            
             console.log(`create ${this.endpoint} params = ${params}, object =`,param);
             return this.http.post<T>(endpoint, param).pipe(tap(console.log),catchError(this.handleError));
         }

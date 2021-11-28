@@ -1,0 +1,17 @@
+<p>recipe-detail works!</p>
+
+<div class="box">
+    <h1>{{recipe.name}}</h1>
+    <img class="card-img-top" src="{{recipe.imgUrl}}" alt="Card image cap" style="width: 40%; height:40%;">
+    <p>{{recipe.time}} min.</p>
+    <p>Recipe for {{recipe.forAmountOfPeople}} people.</p>
+    <div *ngFor="let d of recipe.description">
+        <p>{{d}}</p>
+    </div>
+    
+    <p>{{recipe.tips}}</p>
+    <div *ngIf="user != null">
+        <p>Recipe submitted by: <a routerLink="/user-detail/{{user._id}}">{{user.firstName}} {{user.lastName}}</a> </p>
+    </div>
+    
+</div>
