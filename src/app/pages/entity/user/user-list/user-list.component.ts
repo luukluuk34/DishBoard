@@ -13,12 +13,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserListComponent implements OnInit {
 
   userList: User[] = [];
-  constructor(private route :ActivatedRoute, private router:Router, private userService: UserService, ) { 
-    console.log("GetList", this.userService.getList().subscribe((results) => this.userList = results));
+  constructor(private route :ActivatedRoute, private userService: UserService, ) { 
   }
 
   ngOnInit(): void {
-
+    console.log("GetList", this.userService.getList().subscribe((results) => this.userList = results));
   }
   deleteUser(_id:any){
     console.log("_id", _id)

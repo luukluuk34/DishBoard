@@ -18,7 +18,7 @@ jobs:
           node-version: "14.x"
       - run: npm ci
       - run: npm run build --if-present
-      #- run: npm testss
+      - run: npm test
 
   firebase-deploy:
     runs-on: ubuntu-latest

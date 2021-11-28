@@ -6,10 +6,10 @@ import { User } from './user.model';
 import { of } from 'rxjs';
 // Global mock objects
 const expectedUserData: User = {
-    _id: 'mongo_id',
-    firstName: 'luuk',
+    _id: 'mongo_id_12',
+    firstName: 'laura',
     lastName:'Bartels',
-    email: 'luuk-bartels@hotmail.com',
+    email: 'laura-bartels@hotmail.com',
     about: 'test',
     dateOfBirth: new Date("1997-02-16"),
   };
@@ -31,9 +31,9 @@ describe('UserService', () => {
     let httpSpy: jasmine.SpyObj<HttpClient>;
 
     beforeEach(() => {
-        httpSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'delete']);
+        httpSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'delete','update']);
         TestBed.configureTestingModule({
-            providers: [{ provide: HttpClient, useValue: httpSpy }],
+            providers: [{ provide: HttpClient, useValue: httpSpy },{provide:UserService}],
           });
         service = TestBed.inject(UserService);
         httpSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
@@ -47,7 +47,7 @@ describe('UserService', () => {
         expect(httpSpy).toBeTruthy();
     });
     //Testing happyflow of getList()
-    it('should return a list of users', (done: DoneFn) => {
+    fit('should return a list of users', (done: DoneFn) => {
         httpSpy.get.and.returnValue(of(expectedUserList));
     
         service.getList().subscribe((users: User[]) => {
@@ -57,30 +57,44 @@ describe('UserService', () => {
           done();
         });
     });
-    //Testing unhappyflow of getList()
 
     //Testing happyflow getById
-    it('should return a user', (done: DoneFn) => {
-        httpSpy.get.and.returnValue(of(expectedUserData));
+    fit('should return a user', (done: DoneFn) => {
+        httpSpy.get.and.returnValue(of(expectedUserList[0]));
     
-        service.getById(expectedUserData._id).subscribe((user: User) => {
+        service.getById("mongo_id").subscribe((user: User) => {
           console.log(user);
-          expect(user._id).toEqual(user._id);
+          expect(user._id).toEqual(expectedUserList[0]._id);
           done();
         });
     });
-
-    //Testing unhappyflow getByID
-
-    //Testing happyflow of delete
-    //Testing unhappyflow of delete
-
+    
     //Testing happyflow of create
-    //Testing unhappyflow of create
+    fit('should create a user', (done:DoneFn) => {
+      httpSpy.post.and.returnValue(of(expectedUserList[0]));
+      service.create(expectedUserList[0]).subscribe((user:User) => {
+        expect(user._id).toEqual(expectedUserList[0]._id);
+        done();
+      });
+    });
 
     //Testing happyflow of update
-    //Testing unhappyflow of update
-
-
+    //TODO fix cannot read property
+    // fit('should update a user', (done: DoneFn) => {
+    //   httpSpy.put.and.returnValue(of(expectedUserList[0]));
+    //   service.update(expectedUserList[0], expectedUserList[0]._id).subscribe((users: User) => {
+    //     expect(expectedUserList[0]._id).toEqual(expectedUserList[0]._id);
+    //     done();
+    //   });
+    // });
+    
+    //Testing happyflow of delete
+    fit('should delete a user', (done:DoneFn) => {
+      httpSpy.delete.and.returnValue(of(expectedUserList[0]));
+      service.delete(expectedUserList[0]._id).subscribe((users: User) => {
+        expect(users._id).toEqual(expectedUserList[0]._id);
+        done();
+      });
+    });
 
 });

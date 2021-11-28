@@ -1,6 +1,7 @@
 import { Entity } from "./entity.model";
 import { HttpClient, HttpParams,HttpErrorResponse } from '@angular/common/http'
 import { catchError, Observable,throwError, map, tap } from "rxjs";
+import { NgIf } from "@angular/common";
 
 export class EntityService<T extends Entity> {
 
@@ -24,7 +25,7 @@ export class EntityService<T extends Entity> {
                             .pipe(tap(console.log), catchError(this.handleError));
         }
 
-        public delete(_id:string|null, params?:HttpParams) : Observable<T>{
+        public delete(_id:string| number | null | undefined, params?:HttpParams) : Observable<T>{
             const endpoint = `${this.url}${this.endpoint}/${_id}`;
             console.log(`delete ${endpoint} params = ${params}`);
             return this.http.delete<T>(endpoint).pipe(tap(console.log),catchError(this.handleError));
@@ -34,6 +35,12 @@ export class EntityService<T extends Entity> {
             const endpoint = `${this.url}${this.endpoint}`;
             console.log(`create ${this.endpoint} params = ${params}, object =`,param);
             return this.http.post<T>(endpoint, param).pipe(tap(console.log),catchError(this.handleError));
+        }
+        
+        public update(param:T, _id:string | number | null | undefined, params?:HttpParams): Observable<T> {
+            const endpoint = `${this.url}${this.endpoint}/${_id}`;
+            console.log(`update ${this.endpoint} params = ${params}, object =`,param);
+            return this.http.put<T>(endpoint, param).pipe(tap(console.log),catchError(this.handleError));
         }
 
         public handleError(error: HttpErrorResponse) {

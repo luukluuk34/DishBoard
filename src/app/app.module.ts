@@ -23,6 +23,7 @@ import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recip
 import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
 import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
 import { RecipeService } from './pages/entity/recipe/recipe.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { RecipeService } from './pages/entity/recipe/recipe.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterTestingModule,
   ],
   providers: [{
     provide: EntityService,

@@ -33,11 +33,12 @@ export class UserEditComponent implements OnInit {
       this.user.email = this.addUserForm.get('email')?.value;
       this.user.about = this.addUserForm.get('about')?.value;
       this.user.dateOfBirth = this.addUserForm.get('dateOfBirth')?.value;
+      this.userService.update(this.user, this._id).subscribe();
     }else{
       console.log('Adding user', this.addUserForm.value);
       this.userService.create(this.addUserForm.value).subscribe();
     }
-    this.router.navigate(['/user-list']);
+    this.router.navigate(['/user-interface']);
   }
 
   ngOnInit(): void {    
