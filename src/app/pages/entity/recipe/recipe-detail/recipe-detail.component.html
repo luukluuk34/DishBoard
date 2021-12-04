@@ -1,11 +1,21 @@
-<p>recipe-detail works!</p>
-
 <div class="box">
-    <h1>{{recipe.name}}</h1>
-    <img class="card-img-top" src="{{recipe.imgUrl}}" alt="Card image cap" style="width: 40%; height:40%;">
-    <p>{{recipe.time}} min.</p>
-    <p>Recipe for {{recipe.forAmountOfPeople}} people.</p>
-    <div *ngFor="let d of recipe.description">
+    <div class="row">
+        <div class="col prepContainer">
+            <h1 class="recipeName">{{recipe.name}}</h1>
+            <p class="prepContent"><b>Time: </b>{{recipe.time}} min.</p>
+            <p class="prepContent">This Recipe is for approximately:<b> {{recipe.forAmountOfPeople}} </b>people.</p>
+            <b class="prepContent"><u>Ingredients</u></b>
+            <div class="prepContent" *ngFor="let d of recipe.ingredients;">
+                <p><b>{{d.amount}} {{d.size}}</b> {{d.name}}</p>    
+            </div>
+            
+        </div>
+        <div class="col prepContainer" >
+            <img class="card-img-top" src="{{recipe.imgUrl}}" alt="Card image cap">
+        </div>
+    </div>
+    <div *ngFor="let d of recipe.description; let i = index">
+        <h3>Step {{i + 1}}</h3>
         <p>{{d}}</p>
     </div>
     
