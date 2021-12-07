@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -12,7 +12,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit {
   recipeList: Recipe[] = [];
 
-  constructor(private route :ActivatedRoute, private router:Router, private recipeService: RecipeService) { 
+  constructor(private route :ActivatedRoute, private recipeService: RecipeService) { 
     console.log("GetList", this.recipeService.getList().subscribe((results) => this.recipeList = results));
   }
 

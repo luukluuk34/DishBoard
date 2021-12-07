@@ -1,4 +1,3 @@
-<p>user-edit works!</p>
 <form [formGroup]="addUserForm" class="form" (ngSubmit)="onSubmit()" >
     <label for="firstName">First Name:</label>
     <input formControlName="firstName" minlength="2" required id="firstName" type="text" class="form-control"  placeholder="Your first name" [(ngModel)]="user.firstName">

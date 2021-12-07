@@ -23,17 +23,6 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/recipe-interface" [routerLinkActive]="['active']">Recipe</a>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              routerLink="/"
-              [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{ exact: true }"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
           <li class="nav-item dropdown">
             <div ngbDropdown class="d-inline-block">
               <button class="btn btn-link" id="dropdownMenu1" ngbDropdownToggle>User</button>
@@ -54,10 +43,32 @@
               routerLink="/about"
               [routerLinkActive]="['active']"
               [routerLinkActiveOptions]="{ exact: false }"
-              >About</a
-            >
+              >About</a>
+          </li>
+
+        </ul>
+        <ul *ngIf="isLoggedIn()" class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
           </li>
         </ul>
+        <ul *ngIf="!isLoggedIn()" class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/login"
+              [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{ exact: false }"
+              >login</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/register"
+              >Register</a>
+          </li>
+        </ul>
+
       </div>
     </div>
   </nav>

@@ -10,6 +10,8 @@ import { UserDetailComponent } from './pages/entity/user/user-detail/user-detail
 import { UserEditComponent } from './pages/entity/user/user-edit/user-edit.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
 import { UserListComponent } from './pages/entity/user/user-list/user-list.component';
+import { UserLoginComponent } from './pages/entity/user/user-login/user-login.component';
+import { UserRegisterComponent } from './pages/entity/user/user-register/user-register.component';
 const routes: Routes = [
   {
     path: '', component: LayoutComponent,
@@ -17,13 +19,15 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard'},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'login', component: UserLoginComponent },
+      { path: 'register', component: UserRegisterComponent },
       { path: 'user-edit/:id', component: UserEditComponent},
       { path: 'user-edit', component: UserEditComponent},
       { path: 'user-detail/:id', component:UserDetailComponent},
       { 
         path: 'user-interface', 
         component:UserInterfaceComponent, 
-        children:[{path: ':id', pathMatch: 'full', component: UserDetailComponent}]
+        children:[{path: ':id', pathMatch: 'full',component: UserDetailComponent}]
       },
       { path: 'recipe-interface', component: RecipeInterfaceComponent}, 
       { path: 'recipe-interface/:id', component:RecipeDetailComponent},

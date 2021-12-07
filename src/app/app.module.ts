@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,14 +16,12 @@ import { FooterComponent } from './core/footer/footer.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './pages/about/about.component';
-import { EntityService } from './core/common/entity.service';
-import { UserService } from './pages/entity/user/user.service';
 import { RecipeListComponent } from './pages/entity/recipe/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recipe-detail.component';
 import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
 import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
-import { RecipeService } from './pages/entity/recipe/recipe.service';
-import { RouterTestingModule } from '@angular/router/testing';
+import { UserLoginComponent } from './pages/entity/user/user-login/user-login.component';
+import { UserRegisterComponent } from './pages/entity/user/user-register/user-register.component';
 
 
 @NgModule({
@@ -42,25 +40,19 @@ import { RouterTestingModule } from '@angular/router/testing';
     RecipeDetailComponent,
     RecipeFormComponent,
     RecipeInterfaceComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule,
     NgbModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterTestingModule,
   ],
-  providers: [{
-    provide: EntityService,
-    useClass: UserService
-  },
-  {
-    provide:EntityService,
-    useClass:RecipeService
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
