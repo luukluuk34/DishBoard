@@ -1,10 +1,10 @@
-<p>user-interface works!</p>
-<div class="row">
-    <div class="col">
-      <app-user-list></app-user-list>
-      <a routerLink="/user-edit" class="btn btn-primary">Add new User</a>
-    </div>
-    <div class="col">
-      <router-outlet></router-outlet>
-    </div>
+<div class="container">
+  <div class="row h-100 justify-content-center align-items-center">
+      <div class="col">
+        <app-user-list></app-user-list>
+      </div>
+      <div class="col">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
 </div>

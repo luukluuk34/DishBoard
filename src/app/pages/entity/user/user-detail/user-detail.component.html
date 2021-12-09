@@ -4,6 +4,20 @@
     <h3>About: {{user.about}}</h3>
     <h4>Date of birth: {{user.dateOfBirth}}</h4>
     <a routerLink="/user-edit/{{user._id}}">Edit profile</a>
+    <button *ngIf="loggedInUser._id != user._id" class="btn btn-primary" (click)="followPerson()">Follow User</button>
+
+    <table>
+        <thead>
+            <th>Following: </th>
+        </thead>
+        <tbody>
+            <div *ngFor="let user of userList">
+                <td>
+                    {{user.firstName}} {{user.lastName}}
+                </td>
+            </div>
+        </tbody>
+    </table>
 </div>
 
 

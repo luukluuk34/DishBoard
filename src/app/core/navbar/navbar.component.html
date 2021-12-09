@@ -32,8 +32,16 @@
                   routerLink="/user-interface"
                   [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">
-                  Users
+                  User list
                 </button>
+                <button
+                  *ngIf="currentUser != undefined || currentUser != null"  
+                  class="dropdown-item"
+                  routerLink="/user-detail/{{currentUser._id}}"
+                  [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">
+                  My Profile
+               </button>
               </div>
             </div>
           </li>

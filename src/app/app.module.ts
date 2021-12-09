@@ -22,6 +22,9 @@ import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-fo
 import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
 import { UserLoginComponent } from './pages/entity/user/user-login/user-login.component';
 import { UserRegisterComponent } from './pages/entity/user/user-register/user-register.component';
+import { AuthenticationService } from './pages/entity/user/authentication.service';
+import { UserService } from './pages/entity/user/user.service';
+import { RecipeService } from './pages/entity/recipe/recipe.service';
 
 
 @NgModule({
@@ -52,7 +55,7 @@ import { UserRegisterComponent } from './pages/entity/user/user-register/user-re
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthenticationService, UserService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

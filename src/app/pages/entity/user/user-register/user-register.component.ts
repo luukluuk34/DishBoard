@@ -8,7 +8,6 @@ import { User } from '../user.model';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
-  providers:[AuthenticationService],
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {

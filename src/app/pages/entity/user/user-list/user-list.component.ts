@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  providers:[UserService],
   styles: [
   ]
 })
 export class UserListComponent implements OnInit {
-
+  currentUser:User | undefined;
   userList: User[] = [];
-  constructor(private route :ActivatedRoute, private userService: UserService, ) { 
+  constructor(private route :ActivatedRoute, private userService: UserService, private authenticationService:AuthenticationService) { 
+    this.currentUser = this.authenticationService.currentUser;
   }
 
   ngOnInit(): void {

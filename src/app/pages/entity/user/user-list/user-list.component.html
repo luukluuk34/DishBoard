@@ -1,13 +1,9 @@
-<p>user-list works!</p>
+
 <table>
-    <tr>
-        <th>firstname</th>
-        <th>lastname</th>
-    </tr>
     <tr *ngFor="let user of userList">
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td><a routerLink="{{user._id}}"class="btn btn-primary">Details</a></td>
-        <td><a #user (click)="deleteUser(user._id)" class="btn btn-danger" >Delete</a></td>
+        <td *ngIf="currentUser && currentUser.role == 'ADMIN' "><a (click)="deleteUser(user._id)" class="btn btn-danger" >Delete</a></td>
     </tr>
 </table>

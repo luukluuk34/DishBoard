@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/pages/entity/user/authentication.service'
 import { User } from 'src/app/pages/entity/user/user.model';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  providers:[AuthenticationService],
   styles: [
     '.btn-link { color: rgba(255,255,255,.5); text-decoration: none; }',
     // tslint:disable-next-line: max-line-length
@@ -16,28 +16,41 @@ import { User } from 'src/app/pages/entity/user/user.model';
 export class NavbarComponent {
   @Input() title: string = '';
   isNavbarCollapsed = true;
-  loggedInUser$!: Observable<User | undefined>;
-  isUserLoggedIn!:boolean
+  currentUser:User | undefined;
+  currentUser$!:Observable<User | undefined>
 
-  constructor(private authenticationService:AuthenticationService) { 
-    
+  constructor(private authenticationService:AuthenticationService, private route:Router) { 
+
   }
 
   ngOnInit(): void{
-    console.log("ngOnInit wordt aangeroepen");
-    
-    this.loggedInUser$ = this.authenticationService.currentUser$;
-    this.loggedInUser$.subscribe();
+    this.currentUser$ = this.authenticationService.currentUser$;
+    this.currentUser$.subscribe((user) => this.currentUser = user)
   }
 
   isLoggedIn(): Boolean {
-		if(this.authenticationService.currentUser$.value){
-      return true;
-    }else {
-      return false;
-    }
-	}
+    return this.authenticationService.isLoggedIn();
+  }
 
+  getUser(): User{
+    if(this.authenticationService.currentUser != undefined){
+      return this.authenticationService.currentUser;
+    }else{
+      return new User();
+    }
+  }
+
+  navigateToUserDetail(){
+    if(this.getUser()._id == undefined || this.getUser()._id == 0){
+      this.route.navigate(['/register'])
+      console.log("Please login")
+    }else{
+      console.log(this.getUser()._id);
+      let link = this.getUser()._id;
+      this.route.navigate([`/user-detail/${link}`]);
+     
+    }
+  }
 
   logout():void{
     this.authenticationService.logout();

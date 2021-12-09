@@ -8,7 +8,6 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  providers:[UserService],
   styles: [
   ]
 })
