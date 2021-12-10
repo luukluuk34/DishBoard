@@ -1,8 +1,8 @@
 
-<table>
+<table class="table table-striped table-responsive-lg">
     <tr *ngFor="let user of userList">
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
         <td><a routerLink="{{user._id}}"class="btn btn-primary">Details</a></td>
         <td *ngIf="currentUser && currentUser.role == 'ADMIN' "><a (click)="deleteUser(user._id)" class="btn btn-danger" >Delete</a></td>
     </tr>

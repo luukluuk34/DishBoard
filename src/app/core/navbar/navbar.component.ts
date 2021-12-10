@@ -14,7 +14,7 @@ import { User } from 'src/app/pages/entity/user/user.model';
   ]
 })
 export class NavbarComponent {
-  @Input() title: string = '';
+  @Input() title: string = 'DishBoard';
   isNavbarCollapsed = true;
   currentUser:User | undefined;
   currentUser$!:Observable<User | undefined>

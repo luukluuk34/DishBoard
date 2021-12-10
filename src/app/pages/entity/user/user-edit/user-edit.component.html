@@ -1,16 +1,16 @@
 <form [formGroup]="addUserForm" class="form" (ngSubmit)="onSubmit()" >
     <label for="firstName">First Name:</label>
     <input formControlName="firstName" minlength="2" required id="firstName" type="text" class="form-control"  placeholder="Your first name" [(ngModel)]="user.firstName">
-    <div *ngIf="addUserForm.controls['firstName'].invalid && (addUserForm.controls['firstName'].dirty || addUserForm.controls['firstName'].touched)">
-        <div *ngIf="addUserForm.controls['firstName'].invalid" class="alert" style="color:red;">
+    <div *ngIf="addUserForm.controls['firstName'].invalid && (addUserForm.controls['firstName'].dirty || addUserForm.controls['firstName'].touched)" class="alert alert-danger">
+        <div *ngIf="addUserForm.controls['firstName'].invalid">
             Please enter First name
         </div>
     </div>
     <br/>
     <label for="lastNameInput">Last Name:</label>
     <input formControlName="lastName" minlength="2" id="lastNameInput" type="text" class="form-control" placeholder="Your lastname" [(ngModel)]="user.lastName">
-    <div *ngIf="addUserForm.controls['lastName'].invalid && (addUserForm.controls['lastName'].dirty || addUserForm.controls['lastName'].touched)">
-        <div *ngIf="addUserForm.controls['lastName'].invalid" class="alert" style="color:red;">
+    <div *ngIf="addUserForm.controls['lastName'].invalid && (addUserForm.controls['lastName'].dirty || addUserForm.controls['lastName'].touched)" class="alert alert-danger">
+        <div *ngIf="addUserForm.controls['lastName'].invalid">
             Please enter lastName
         </div>
     </div>
@@ -18,24 +18,24 @@
     <br/>
     <label for="emailInput">Email:</label>
     <input formControlName="email" minlength="4" id="emailInput" type="email" class="form-control" placeholder="Your email" [(ngModel)]="user.email" >
-    <div *ngIf="addUserForm.controls['email'].invalid && (addUserForm.controls['email'].dirty || addUserForm.controls['email'].touched)">
-        <div *ngIf="addUserForm.controls['email'].invalid" class="alert" style="color:red;">
+    <div *ngIf="addUserForm.controls['email'].invalid && (addUserForm.controls['email'].dirty || addUserForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="addUserForm.controls['email'].invalid">
             Please enter email
         </div>
     </div>
     <br/>
     <label for="aboutInput">About:</label>
     <textarea formControlName="about" id="aboutInput" type="text" class="form-control" placeholder="About you" [(ngModel)]="user.about"></textarea>
-    <div *ngIf="addUserForm.controls['about'].invalid && (addUserForm.controls['about'].dirty || addUserForm.controls['about'].touched)">
-        <div *ngIf="addUserForm.controls['about'].invalid" class="alert" style="color:red;">
+    <div *ngIf="addUserForm.controls['about'].invalid && (addUserForm.controls['about'].dirty || addUserForm.controls['about'].touched)"class="alert alert-danger">
+        <div *ngIf="addUserForm.controls['about'].invalid">
             Please enter about page
         </div>
     </div>
     <br/>
     <label for="dateOfBirthInput">Date of Birth:</label>
     <input formControlName="dateOfBirth" id="dateOfBirthInput" type="dateOfBirth" class="form-control" placeholder="0000-00-00"  [(ngModel)]="user.dateOfBirth">
-    <div *ngIf="addUserForm.controls['dateOfBirth'].invalid && (addUserForm.controls['dateOfBirth'].dirty || addUserForm.controls['dateOfBirth'].touched)">
-        <div *ngIf="addUserForm.controls['dateOfBirth'].invalid" class="alert" style="color:red;">
+    <div *ngIf="addUserForm.controls['dateOfBirth'].invalid && (addUserForm.controls['dateOfBirth'].dirty || addUserForm.controls['dateOfBirth'].touched)"class="alert alert-danger">
+        <div *ngIf="addUserForm.controls['dateOfBirth'].invalid">
             Please enter your age.
         </div>
     </div>

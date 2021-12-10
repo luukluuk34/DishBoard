@@ -14,7 +14,7 @@ export class EntityService<T extends Entity> {
         public getList(params?: HttpParams) : Observable<T[]> {
             const endpoint = `${this.url}${this.endpoint}`;
             console.log(`list ${endpoint} params = ${params}`);
-             return this.http.get<T[]>(endpoint)
+            return this.http.get<T[]>(endpoint)
                              .pipe(tap(console.log), catchError(this.handleError));
         }
 

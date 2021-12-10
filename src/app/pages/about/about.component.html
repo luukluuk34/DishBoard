@@ -6,10 +6,9 @@
 <div>
 <h3>User</h3>
     <p>
-        A user makes an account by entering his or hers first name, last name, email and date of birth.
+        A user makes an account by entering his or hers first name, last name, email, password and date of birth.
         <br/>After this a user can write about him/her self to give a bit more personal flair to the profile.
-        <br/>A user can make a recipe on the website and it will be automatically added to their profile and uploaded on the website.
-        <br/>A user can also save recipes that he or she likes so it is easily available for use.
+        <br/>A user can make a recipe on the website and it will be automatically uploaded on the website.
     </p>
 </div>
 <div>
@@ -21,17 +20,19 @@
         <br/>- For how many people the recipe is indicated by a number,
         <br/>- List of ingredients (see ingredients how an ingredient is build),
         <br/>- Total Nutrition calculated by the different ingredients nutrition,
-        <br/>- Description on how to prepare and make the meal,
+        <br/>- cooking instructions on how to prepare and make the meal,
         <br/>- Optionally a user can give tips.
+        <br/>- An image url to have a nice image for use.
         <br/><br/>
-        A recipe needs to have atleast 3 ingredients to make it. 
+        A recipe needs to have atleast 2 ingredients to make it. 
+        Cooking instructions is an array of descriptions which needs to have a minimum of 1 cooking step
         <br/>Total nutriton of each nutrition value cannot be calculated if one or more ingredients does not have the nutrition value filled in by the user.
     </p>
 </div>
 <div>
     <h3>Ingredient</h3>
     <p>
-        An ingredient has name, amount determined by an enum value, Nutrition value (see nutrition value on how it is made).
+        An ingredient has name, Amount in numbers ,Size determined by an enum value, Nutrition value (see nutrition value on how it is made).
         <br/> If you want to fill in a value you need to select a type of weight and add the appropiate amount of it for the recipe.
     </p>
 </div>
@@ -55,41 +56,119 @@
     <div class="row">
         <ul class="col">
             <li><b>User</b></li>
+            <li>Email: string</li>
             <li>FirstName: string</li>
             <li>LastName: string</li>
-            <li>Email: string</li>
+            <li>Password: string</li>
             <li>About: string</li>
             <li>Date of birth: Date</li>
-            <li>Saved Recipes: Recipe</li>
-            <li>Made Recipes: Recipe</li>
         </ul>
         <ul class="col">
             <li><b>Recipe</b></li>
             <li>Name: String</li>
             <li>Time: Number</li>
-            <li>For how many people: int</li>
-            <li>What you need in the kitchen: string</li>
+            <li>For how many people: Number</li>
             <li>List of ingredients: Ingerdient[]</li>
-            <li>Total Nutrition: NutritionValue</li>
-            <li>How to make the meal: string</li>
+            <li>Description: string[]</li>
             <li>Tips: string</li>
+            <li>img url: string</li>
         </ul>
         <ul class="col">
             <li><b>Ingredient</b></li>
             <li>Name: string</li>
             <li>Amount: string</li>
-            <li>Nutrtion value: NutritionValue</li>
+            <li>Nutrition value: NutritionValue</li>
         </ul>
         <ul class="col">
             <li><b>Nutrition value</b></li>
-            <li>Calories:double</li>
-            <li>Carbohydrates:double</li>
-            <li>Sodium:double</li>
-            <li>Protein:double</li>
-            <li>Fat:double</li>
-            <li>Fiber:double</li>
+            <li>Calories:Number</li>
+            <li>Carbohydrates:Number</li>
+            <li>Sodium:Number</li>
+            <li>Protein:Number</li>
+            <li>Fat:Number</li>
+            <li>Fiber:Number</li>
         </ul>
     </div>
 </div>
+<br/>
+<div style="border-style: solid; border-color:black; border:2; padding-left: 30px;">
+    <table>
+        <thead>
+            <th>HTTP</th>
+            <th>Route</th>
+            <th>Output</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/user/</td>
+                <td>List of users</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/user/:id</td>
+                <td>Specific user</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/user/following/:id</td>
+                <td>Get list of users that the user follows</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/user/register</td>
+                <td>User object and a token, places the user in the DB</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/user/login</td>
+                <td>User object and a token, logs the user in the website</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/user/follow/:id</td>
+                <td>Adds the user ID to the logged in user ID</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/user/:id</td>
+                <td>Changes the user data</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/user/:id</td>
+                <td>Deletes the user data</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/recipe/</td>
+                <td>Gets all the recipe data</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/recipe/:id</td>
+                <td>Get the specific recipe data</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/user/</td>
+                <td>Posts the recipe data</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/user/:id</td>
+                <td>Updates the recipe data</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/recipe/:id</td>
+                <td>Deletes the recipe data</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+</div>
+
 <div class="pt-5"></div>
 <div class="pt-5"></div>

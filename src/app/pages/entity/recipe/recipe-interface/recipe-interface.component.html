@@ -1,2 +1,6 @@
-<a class="btn btn-primary" routerLink="/recipe-form">Add a recipe</a>
-<app-recipe-list></app-recipe-list>
+<div class="row justify-content-center">
+    <a *ngIf="isLoggedIn()" class="btn btn-primary" routerLink="/recipe-form">+</a>
+</div>
+<div class="row top-buffer">
+    <app-recipe-list></app-recipe-list>
+</div>

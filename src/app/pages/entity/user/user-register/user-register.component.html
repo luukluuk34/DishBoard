@@ -7,31 +7,56 @@
 			<div class="card-body">
 				<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 					<div class="input-group form-group">
-						<input type="email" class="form-control" placeholder="email" formControlName="email">
+						<input type="email" class="form-control" placeholder="Email" id="email" formControlName="email">
+					</div>
+					<div *ngIf="email && email.invalid && (email.dirty &&  email.touched)" class="alert alert-danger">
+						<div *ngIf="email.errors?.['required']">
+							Email is required.
+						</div>
+						<div *ngIf="email.errors?.['email']">
+							Please fill in a valid email address
+						</div>
 					</div>
 					<div class="input-group form-group">
-						<input type="password" class="form-control" placeholder="password" formControlName="password">
+						<input type="password" class="form-control" placeholder="Password" id="password" formControlName="password">
+					</div>
+					<div *ngIf="password && password.invalid && (password.dirty &&  password.touched)" class="alert alert-danger">
+						<div *ngIf="password.errors?.['required']">
+							Password is required.
+						</div>
 					</div>
                     <div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="FirstName" formControlName="firstName">
+						<input type="text" class="form-control" placeholder="FirstName" id="firstname" formControlName="firstName">
+					</div>
+					<div *ngIf="firstName && firstName.invalid && (firstName.dirty &&  firstName.touched)" class="alert alert-danger">
+						<div *ngIf="firstName.errors?.['required']">
+							First name is required.
+						</div>
 					</div>
 					<div class="input-group form-group">
 						<input type="text" class="form-control" placeholder="LastName" formControlName="lastName">
 					</div>
-                    <div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="About" formControlName="about">
+					<div *ngIf="lastName && lastName.invalid && (lastName.dirty &&  lastName.touched)" class="alert alert-danger">
+						<div *ngIf="lastName.errors?.['required']">
+							Last name is required.
+						</div>>
 					</div>
 					<div class="input-group form-group">
 						<input type="date" class="form-control" placeholder="0000-00-00" formControlName="dateOfBirth">
 					</div>
+					<div *ngIf="dateOfBirth && dateOfBirth.invalid && (dateOfBirth.dirty &&  dateOfBirth.touched)" class="alert alert-danger">
+						<div *ngIf="dateOfBirth.errors?.['required']">
+							Date of birth is required
+						</div>
+					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn btn-primary float-left">
+						<input type="submit" value="Register" class="btn btn-primary float-left">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account? <a routerLink="/register"> Sign Up</a>
+					Already have an account? <a routerLink="/login"> Sign In</a>
 				</div>
 			</div>
 		</div>

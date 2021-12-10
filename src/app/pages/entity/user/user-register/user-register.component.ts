@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../authentication.service';
-import { User } from '../user.model';
+import { Role, User } from '../user.model';
 
 @Component({
   selector: 'app-user-register',
@@ -21,7 +21,7 @@ submitted = false;
     this.registerForm = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
-
+        Validators.email
       ]),
       password: new FormControl(null, [
         Validators.required,
@@ -32,10 +32,10 @@ submitted = false;
       lastName: new FormControl(null, [
         Validators.required,
       ]),
-      about: new FormControl(null, [
+      dateOfBirth: new FormControl(null, [
         Validators.required,
       ]),
-      dateOfBirth: new FormControl(null, [
+      role: new FormControl(Role.USER, [
         Validators.required,
       ]),
     });
@@ -58,20 +58,26 @@ submitted = false;
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.submitted = true;
+      console.log("User",this.registerForm.value)
       this.authenticationService
         .registerUser(this.registerForm.value)
-        // .pipe(delay(1000))
         .subscribe((user) => {
           if (user) {
             console.log('Registered');
             this.router.navigate(['/']);
           }
-          this.submitted = false;
+          this.submitted = true;
         });
     } else {
       this.submitted = false;
       console.error('loginForm invalid');
     }
   }
+
+  get email(){return this.registerForm.get('email');}
+  get password(){return this.registerForm.get('password');}
+  get firstName(){return this.registerForm.get('firstName');}
+  get lastName(){return this.registerForm.get('lastName');}
+  get dateOfBirth(){return this.registerForm.get('dateOfBirth');}
 
 }

@@ -1,0 +1,11 @@
+#text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 18px;
+    min-height: 130px;     
+    max-height: 130px;      
+    -webkit-line-clamp: 6; 
+    -webkit-box-orient: vertical;
+    
+  }

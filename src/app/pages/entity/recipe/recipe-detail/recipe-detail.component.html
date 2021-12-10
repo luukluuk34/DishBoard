@@ -6,7 +6,8 @@
             <p class="prepContent">This Recipe is for approximately:<b> {{recipe.forAmountOfPeople}} </b>people.</p>
             <b class="prepContent"><u>Ingredients</u></b>
             <div class="prepContent" *ngFor="let d of recipe.ingredients;">
-                <p><b>{{d.amount}} {{d.size}}</b> {{d.name}}</p>    
+                <p><b>{{d.amount}} {{d.size}}</b>{{d.name}}</p>    
+                <b>Nutritional Value</b><p>Calories: {{d.nutrition.calories}}carbohydrates: {{d.nutrition.carbohydrates}}sodium:{{d.nutrition.sodium}}Protein:{{d.nutrition.protein}}Fat: {{d.nutrition.fat}}Fiber:{{d.nutrition.fiber}}</p>
             </div>
             
         </div>
@@ -20,8 +21,13 @@
     </div>
     
     <p>{{recipe.tips}}</p>
-    <div *ngIf="user != null">
-        <p>Recipe submitted by: <a routerLink="/user-detail/{{user._id}}">{{user.firstName}} {{user.lastName}}</a> </p>
+    <div *ngIf="recipeUser != null">
+        <p>Recipe submitted by: <a routerLink="/user-detail/{{recipeUser._id}}">{{recipeUser.firstName}} {{recipeUser.lastName}}</a> </p>
     </div>
     
+    <div *ngIf="recipeUser && currentUser && (recipeUser._id == currentUser._id || currentUser.role == 'ADMIN')" style="margin-top: 40px;">
+        <button class="btn btn-warning" style="margin-right: 30px;" routerLink="/recipe-form/{{recipe._id}}"> Edit Recipe</button>
+        <button class="btn btn-danger" (click)="deleteRecipe()"> Delete Recipe</button>
+    </div>
+
 </div>

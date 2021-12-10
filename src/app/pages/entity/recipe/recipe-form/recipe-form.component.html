@@ -11,8 +11,6 @@
     <div >
         <button class="btn btn-danger" (click)="addIngredient()">Add ingredient</button>
         <br>
-        <label for="ingredients">Ingredient:</label>
-        <br>
         <div class="row" formArrayName="ingredients">
             <div class="col-md-6" *ngFor="let d of ingredients.controls; let i = index">
                 <div [formGroupName]="i">
@@ -21,7 +19,7 @@
                     <input class="form-control" type="text" formControlName="name" placeholder="Name ingredient">
                     <br>
                     <label for="amount">Amount:</label>
-                    <input class="form-control" type="text" formControlName="amount" placeholder="Amount ingredient">
+                    <input class="form-control" type="number" formControlName="amount" placeholder="Amount ingredient">
                     <br>
                     <label for="size">Size</label>
                     <select class="form-control" formControlName="size">
@@ -81,6 +79,10 @@
             </div>
         </div>
     </div>
+    <div *ngIf="invalidForm && ingredients.length <= 1" class="alert alert-danger">
+        Please add 2 or more ingredients
+    </div>
+
     <br>
     <button (click)="addDescription()" class="btn btn-danger">Add cooking step</button>
     <br>
@@ -92,8 +94,12 @@
         <textarea type="text" class="form-control" [formControlName]="i" ></textarea>
         </div>
         <div *ngIf="description.length > 1">
+            <br>
             <button (click)="deleteDescription(description.length - 1)" class="btn btn-danger">Delete step</button> 
         </div>
+    </div>
+    <div *ngIf="invalidForm && description.length <= 0" class="alert alert-danger">
+        Please add 1 or more Cooking steps
     </div>
     <br>
     <label for="tips">Tips</label>
@@ -103,5 +109,4 @@
     <input class="form-control" formControlName="imgUrl" [(ngModel)]="recipe!.imgUrl">
     <br>
     <button type="submit" class="btn btn-success" [disabled]="addRecipeForm.invalid">Save</button>
-
 </form>

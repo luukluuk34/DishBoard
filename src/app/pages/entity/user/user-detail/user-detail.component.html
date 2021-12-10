@@ -3,7 +3,7 @@
     <h3>Email: {{user.email}}</h3>
     <h3>About: {{user.about}}</h3>
     <h4>Date of birth: {{user.dateOfBirth}}</h4>
-    <a routerLink="/user-edit/{{user._id}}">Edit profile</a>
+    <a *ngIf="loggedInUser._id == user._id || loggedInUser.role == 'ADMIN'" routerLink="/user-edit/{{user._id}}">Edit profile</a>
     <button *ngIf="loggedInUser._id != user._id" class="btn btn-primary" (click)="followPerson()">Follow User</button>
 
     <table>
