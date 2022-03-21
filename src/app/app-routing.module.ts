@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { LayoutComponent } from './core/layout/layout.component'
 import { AboutComponent } from './pages/about/about.component';
+import { IngredientListComponent } from './pages/entity/ingredient/ingredient-list/ingredient-list.component';
 import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recipe-detail.component';
 import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
 import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
@@ -31,7 +32,10 @@ const routes: Routes = [
       },
       { path: 'recipe-interface', component: RecipeInterfaceComponent}, 
       { path: 'recipe-interface/:id', component:RecipeDetailComponent},
-      { path: 'recipe-form',component:RecipeFormComponent},
+      { path: 'recipe-form',
+        component:RecipeFormComponent,
+        children:[{path: 'ingredient-list', pathMatch: 'full', component: IngredientListComponent}]
+      },
       { path: 'recipe-form/:id', component:RecipeFormComponent}
     ]
   },

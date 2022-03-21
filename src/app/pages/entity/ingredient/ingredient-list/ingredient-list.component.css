@@ -1,0 +1,13 @@
+.ingredientSelector{
+    border:2px solid darkblue;
+    border-radius: 10px;
+    background-color: rgb(51, 166, 219);
+    color:black;
+}
+
+.ingredientSelector:hover{
+    border:2px solid darkgreen;
+    border-radius: 10px;
+    background-color: greenyellow;
+    color:black;
+}

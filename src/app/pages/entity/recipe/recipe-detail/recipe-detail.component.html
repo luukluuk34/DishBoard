@@ -7,7 +7,6 @@
             <b class="prepContent"><u>Ingredients</u></b>
             <div class="prepContent" *ngFor="let d of recipe.ingredients;">
                 <p><b>{{d.amount}} {{d.size}}</b>{{d.name}}</p>    
-                <b>Nutritional Value</b><p>Calories: {{d.nutrition.calories}}carbohydrates: {{d.nutrition.carbohydrates}}sodium:{{d.nutrition.sodium}}Protein:{{d.nutrition.protein}}Fat: {{d.nutrition.fat}}Fiber:{{d.nutrition.fiber}}</p>
             </div>
             
         </div>

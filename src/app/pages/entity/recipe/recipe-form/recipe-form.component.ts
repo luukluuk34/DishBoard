@@ -48,7 +48,7 @@ export class RecipeFormComponent implements OnInit {
       description: new FormArray([new FormControl(null,Validators.required)]),
       tips: new FormControl(this.recipe.tips, Validators.required),
       imgUrl: new FormControl(this.recipe.imgUrl, Validators.required),
-      user_id: new FormControl(this.recipe.user_id, Validators.required)
+      user_id: new FormControl(this.recipe.user, Validators.required)
     })
     this.addRecipeForm.get('user_id')?.setValue(this.currentUser?._id);
 
@@ -93,17 +93,10 @@ export class RecipeFormComponent implements OnInit {
       name: new FormControl(null,Validators.required),
       amount: new FormControl(null,Validators.required),
       size: new FormControl(null, Validators.required),
-      nutrition: new FormGroup({
-        calories: new FormControl(),
-        carbohydrates: new FormControl(),
-        sodium: new FormControl(),
-        protein: new FormControl(),
-        fat: new FormControl(),
-        fiber: new FormControl()
-      })
     })
   }
   addIngredient(){
+    //this.router.navigateByUrl('/recipe-form/ingredient-list');
     this.ingredients.push(this.newIngredientGroup());
   }
   deleteIngredient(index:number){

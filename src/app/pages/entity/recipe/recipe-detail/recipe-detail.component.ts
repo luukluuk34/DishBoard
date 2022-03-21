@@ -33,7 +33,7 @@ export class RecipeDetailComponent implements OnInit {
       console.log("Recipe from param", this.recipeService.getById(this._id)
       .subscribe((result) => {
         this.recipe = result;
-        this.userService.getById(result.user_id)
+        this.userService.getById(result.user.userid)
           .subscribe((result) => this.recipeUser = result);
       }));
     });
