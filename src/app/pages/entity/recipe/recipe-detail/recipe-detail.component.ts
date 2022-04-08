@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -18,6 +19,7 @@ export class RecipeDetailComponent implements OnInit {
   recipeUser:User | null;
   currentUser$:Observable<User | undefined>
   currentUser:User|undefined;
+  token!:string | string[];
 
   constructor(private route: ActivatedRoute, private recipeService : RecipeService,private userService:UserService,private auth:AuthenticationService, private router: Router) { 
     this.recipe = new Recipe();
@@ -25,6 +27,7 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeUser = new User();
     this.currentUser$ = this.auth.currentUser$;
     this.currentUser$.subscribe((user) => this.currentUser = user);
+    this.auth.getTokenFromLocalStorage().subscribe((element) => this.token = element);
   }
 
   ngOnInit(): void {
@@ -41,8 +44,14 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   deleteRecipe(){
-    this.recipeService.delete(this.recipe._id).subscribe();
+    this.recipeService.delete(this.recipe._id, this.sendHeaders()).subscribe();
     this.router.navigate(['/recipe-interface']);
+  }
+
+  sendHeaders() : HttpHeaders{
+    let header = new HttpHeaders();
+    header = header.set('Authorization', `Bearer ${this.token}`)
+    return header;
   }
 
 }

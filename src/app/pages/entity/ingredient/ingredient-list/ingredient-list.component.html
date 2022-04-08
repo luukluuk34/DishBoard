@@ -1,7 +1,17 @@
-<div *ngFor="let ingredient of ingredientList">
-    <div class="ingredientSelector">
+<div *ngFor="let ingredient of ingredientList; let i = index" class="ingredientContainer">
+    <div class="ingredientBox" (click)="selectIngredient(i)">
         {{ingredient.name}}
+        <br>
+        {{ingredient.amount}}  {{ingredient.size}}
+        <br>    
+    </div>
+    <div *ngIf="currentUser?.role == accessRole">
+        <button class="btn btn-warning" (click)="updateIngredient(ingredient)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="deleteIngredient(ingredient)">Delete</button>
     </div>
 </div>
 <br>
-<button class="btn btn-primary">Can't find the ingredient you're looking for?</button>
+<br>
+<div *ngIf="!isRouteSelected">
+    <button class="btn btn-primary" routerLink="/ingredient-form">Can't find the ingredient you're looking for?</button>
+</div>

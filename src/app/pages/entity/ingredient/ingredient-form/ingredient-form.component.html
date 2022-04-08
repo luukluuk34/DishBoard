@@ -1,29 +1,51 @@
+<form class="form" (ngSubmit)="onSubmit()"  [formGroup]="addIngredientForm">
+<label for="name"> Name: </label>
+<input
+  class="form-control"
+  type="string"
+  formControlName="name"
+  placeholder="Name Ingredient"
+  [(ngModel)]="selectedIngredient!.name"
+/>
+<label for="amount">Amount:</label>
+<input
+  class="form-control"
+  type="number"
+  formControlName="amount"
+  placeholder="Amount ingredient"
+  [(ngModel)]="selectedIngredient!.amount"
+/>
 
-                    <!-- <label for="amount">Amount:</label>
-                    <input class="form-control" type="number" formControlName="amount" placeholder="Amount ingredient">
-                    <br>
-                    <label for="size">Size</label>
-                    <select class="form-control" formControlName="size">
-                        <option value="" disabled [selected]="true"> Choose a size...</option>
-                        <optgroup label="Dry">
-                            <option value="Cups">Cups</option>
-                            <option value="Dashes">Dashes</option>
-                            <option value="Ounces">Ounces</option>
-                            <option value="Pinches">Pinches</option>
-                            <option value="Tablespoons">Tablespoons</option>
-                            <option value="Teaspoons">Teaspoons</option>
-                            <option value="Pounds">Pounds</option>
-                            <option value="Each">Each</option>
-                            <option value="Grams">Grams</option>
-                        </optgroup>
-                        <optgroup label="Liquids">
-                            <option value="Cups">Cups</option>
-                            <option value="Gallons">Gallons</option>
-                            <option value="Ounces">Ounces</option>
-                            <option value="Pints">Pints</option>
-                            <option value="Quarts">Quarts</option>
-                            <option value="Tablespoons">Tablespoons</option>
-                            <option value="Teaspoons">Teaspoons</option>
-                            <option value="Millilitre">Millilitre</option>
-                        </optgroup>
-                    </select> -->
+<label for="size">Size:</label>
+<select class="form-control" formControlName="size" [(ngModel)]="selectedIngredient!.size">
+  <option value="" disabled [selected]="true">Choose a size...</option>
+  <optgroup label="Dry">
+    <option value="Cups">Cups</option>
+    <option value="Dashes">Dashes</option>
+    <option value="Ounces">Ounces</option>
+    <option value="Pinches">Pinches</option>
+    <option value="Tablespoons">Tablespoons</option>
+    <option value="Teaspoons">Teaspoons</option>
+    <option value="Pounds">Pounds</option>
+    <option value="Each">Each</option>
+    <option value="Grams">Grams</option>
+  </optgroup>
+  <optgroup label="Liquids">
+    <option value="Cups">Cups</option>
+    <option value="Gallons">Gallons</option>
+    <option value="Ounces">Ounces</option>
+    <option value="Pints">Pints</option>
+    <option value="Quarts">Quarts</option>
+    <option value="Tablespoons">Tablespoons</option>
+    <option value="Teaspoons">Teaspoons</option>
+    <option value="Millilitre">Millilitre</option>
+  </optgroup>
+</select>
+
+<br>
+<label for="substitudes">Substitude Ingredients: </label>
+<br>
+<app-ingredient-list id="substitudes" (newIngredientEvent)="addSubstitude($event)" (deleteIngredientEvent)="deleteSubstitude($event)"></app-ingredient-list>
+
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>

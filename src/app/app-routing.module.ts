@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { LayoutComponent } from './core/layout/layout.component'
 import { AboutComponent } from './pages/about/about.component';
+import { IngredientFormComponent } from './pages/entity/ingredient/ingredient-form/ingredient-form.component';
 import { IngredientListComponent } from './pages/entity/ingredient/ingredient-list/ingredient-list.component';
 import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recipe-detail.component';
 import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
@@ -36,7 +37,13 @@ const routes: Routes = [
         component:RecipeFormComponent,
         children:[{path: 'ingredient-list', pathMatch: 'full', component: IngredientListComponent}]
       },
-      { path: 'recipe-form/:id', component:RecipeFormComponent}
+      { path: 'recipe-form/:id', component:RecipeFormComponent},
+      { path: 'ingredient-form', 
+        component:IngredientFormComponent,
+        children:[{path:'ingredient-list', pathMatch: 'full', component:IngredientListComponent}]
+      },
+      { path: 'ingredient-form/:id', component:IngredientFormComponent }
+      
     ]
   },
   { path: '**', redirectTo: '/' }

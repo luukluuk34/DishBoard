@@ -1,13 +1,39 @@
-.ingredientSelector{
+.ingredientContainer{
+    display:inline-block;
+    position:relative;
+    margin:0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.ingredientBox{
     border:2px solid darkblue;
     border-radius: 10px;
     background-color: rgb(51, 166, 219);
     color:black;
+    width: 150px;
 }
-
-.ingredientSelector:hover{
+.ingredientBox:hover{
     border:2px solid darkgreen;
     border-radius: 10px;
     background-color: greenyellow;
+    width: 150px;
+    color:black;
+}
+
+.ingredientBox:active{
+    border:2px solid red;
+    border-radius: 10px;
+    background-color: greenyellow;
+    width: 150px;
+    color:black;
+}
+
+.ingredientSelected{
+    border:2px solid darkgreen;
+    border-radius: 10px;
+    background-color: greenyellow;
+    width: 150px;
     color:black;
 }
