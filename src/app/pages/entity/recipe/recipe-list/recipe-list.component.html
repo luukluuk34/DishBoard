@@ -1,11 +1,14 @@
 <div class="card-deck justify-content-center">
-    <div *ngFor="let recipe of recipeList">
+    <div *ngFor="let recipe of recipeList; let i = index">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{recipe.imgUrl}}" alt="Card image cap" style="height: 160px;width: 17.9rem;">
             <div class="card-body">
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <p class="card-text" id="text">{{recipe.description[0]}}</p>
+                <!-- view recipe tenzij de parent recipe book form is -->
+
                 <a routerLink="/recipe-interface/{{recipe._id}}" class="btn btn-primary">View Recipe</a>
+                <button *ngIf="addButtonToggle" class="btn btn-success" (click)="selectRecipe(recipe)">add</button>
             </div>
         </div>
         <br>

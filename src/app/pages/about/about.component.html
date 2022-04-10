@@ -19,35 +19,27 @@
         <br/>- Time in minutes,
         <br/>- For how many people the recipe is indicated by a number,
         <br/>- List of ingredients (see ingredients how an ingredient is build),
-        <br/>- Total Nutrition calculated by the different ingredients nutrition,
         <br/>- cooking instructions on how to prepare and make the meal,
         <br/>- Optionally a user can give tips.
         <br/>- An image url to have a nice image for use.
         <br/><br/>
         A recipe needs to have atleast 2 ingredients to make it. 
         Cooking instructions is an array of descriptions which needs to have a minimum of 1 cooking step
-        <br/>Total nutriton of each nutrition value cannot be calculated if one or more ingredients does not have the nutrition value filled in by the user.
     </p>
 </div>
 <div>
     <h3>Ingredient</h3>
     <p>
-        An ingredient has name, Amount in numbers ,Size determined by an enum value, Nutrition value (see nutrition value on how it is made).
+        An ingredient has name, Amount in numbers ,Size determined by an enum value
         <br/> If you want to fill in a value you need to select a type of weight and add the appropiate amount of it for the recipe.
     </p>
 </div>
 <div>
-    <h3>Nutrition Value</h3>
+    <h3>Recipe Book</h3>
     <p>
-        In order to fill in the total nutritional value for an ingredient a user needs to fill in the following properties:
-        <br/>-Calories
-        <br/>-Carbohydrates
-        <br/>-Sodium
-        <br/>-Protein
-        <br/>-Fat
-        <br/>-Fiber
-        <br/>A user does <b>not need</b> to fill in all the nutritional values because sometimes the data is not available for the user. However this means the recipe does not calculate the total nutritional values.
-
+        A user can make a recipe list in which he/she saves his/hers favorite recipes:
+        a recipe book has a title and an about text. 
+        <br> you can add multiple chapters which each has a title, intro and a list of recipes.
     </p>
 </div>
 
@@ -77,16 +69,14 @@
             <li><b>Ingredient</b></li>
             <li>Name: string</li>
             <li>Amount: string</li>
-            <li>Nutrition value: NutritionValue</li>
         </ul>
         <ul class="col">
-            <li><b>Nutrition value</b></li>
-            <li>Calories:Number</li>
-            <li>Carbohydrates:Number</li>
-            <li>Sodium:Number</li>
-            <li>Protein:Number</li>
-            <li>Fat:Number</li>
-            <li>Fiber:Number</li>
+            <li><b>Recipe Book</b></li>
+            <li>title:string</li>
+            <li>about:string</li>
+            <li>chapterTitle:string</li>
+            <li>chapterIntro:string</li>
+            <li>recipeList:Recipe[]</li>
         </ul>
     </div>
 </div>
@@ -110,11 +100,6 @@
                 <td>Specific user</td>
             </tr>
             <tr>
-                <td>GET</td>
-                <td>/user/following/:id</td>
-                <td>Get list of users that the user follows</td>
-            </tr>
-            <tr>
                 <td>POST</td>
                 <td>/user/register</td>
                 <td>User object and a token, places the user in the DB</td>
@@ -123,11 +108,6 @@
                 <td>POST</td>
                 <td>/user/login</td>
                 <td>User object and a token, logs the user in the website</td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/user/follow/:id</td>
-                <td>Adds the user ID to the logged in user ID</td>
             </tr>
             <tr>
                 <td>PUT</td>
@@ -151,12 +131,12 @@
             </tr>
             <tr>
                 <td>POST</td>
-                <td>/user/</td>
+                <td>/recipe/</td>
                 <td>Posts the recipe data</td>
             </tr>
             <tr>
                 <td>PUT</td>
-                <td>/user/:id</td>
+                <td>/recipe/:id</td>
                 <td>Updates the recipe data</td>
             </tr>
             <tr>
@@ -164,7 +144,73 @@
                 <td>/recipe/:id</td>
                 <td>Deletes the recipe data</td>
             </tr>
+            <tr>
+                <td>POST</td>
+                <td>/ingredients/</td>
+                <td>adds new ingredient</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/ingredients/</td>
+                <td>Gets a list of all ingredients</td>
+            </tr>
+            <tr>                
+                <td>GET</td>
+                <td>/ingredients/:id</td>
+                <td>Gets a specific ingredient</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/ingredients/:id</td>
+                <td>Updates a specific ingredient</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/ingredients/:id</td>
+                <td>Deletes a specific ingredient</td>
+            </tr>
             
+
+            <tr>
+                <td>POST</td>
+                <td>/recipeBook/</td>
+                <td>Posts the recipe book data</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/recipeBook/follow/:id</td>
+                <td>Follows the Recipe Book</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/recipeBook/unfollow/:id</td>
+                <td>Unfollows the Recipe Book</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/recipeBook/</td>
+                <td>Gets a list of recipe books</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/recipeBook/follow/:id</td>
+                <td>Gets a list of recipebooks based on a user ID</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/recipeBook/user/:id</td>
+                <td>Gets all recipeBooks created by a user</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/recipeBook/:id</td>
+                <td>Updates a recipebook</td>
+            </tr>
+            <tr>                
+                <td>DELETE</td>
+                <td>/recipeBook/:id</td>
+                <td>Gets a specific ingredient</td>
+            </tr>
         </tbody>
     </table>
 

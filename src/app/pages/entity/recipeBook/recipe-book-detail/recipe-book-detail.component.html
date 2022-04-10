@@ -1,0 +1,24 @@
+<div *ngIf="recipeBook">
+    <h2>{{recipeBook.title}}</h2>
+    <p>{{recipeBook.about}}</p>
+    <div *ngFor="let d of recipeBook.chapters; let i = index">
+        
+        <h3>Chapter {{i+1}}: {{d.chapterTitle}}</h3>
+        <p>{{d.chapterIntro}}</p>
+        <button class="btn btn-success" (click)="viewRecipe(d)" >View Recipes</button>
+        <div *ngFor="let r of d.recipeList">
+           <div *ngIf="r.name">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{r.imgUrl}}" alt="Card image cap" style="height: 160px;width: 17.9rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{r.name}}</h5>
+                    <p class="card-text" id="text">{{r.description[0]}}</p>
+                    <!-- view recipe tenzij de parent recipe book form is -->
+    
+                    <a routerLink="/recipe-interface/{{r._id}}" class="btn btn-primary">View Recipe</a>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+</div>

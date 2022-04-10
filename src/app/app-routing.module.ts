@@ -8,6 +8,9 @@ import { IngredientListComponent } from './pages/entity/ingredient/ingredient-li
 import { RecipeDetailComponent } from './pages/entity/recipe/recipe-detail/recipe-detail.component';
 import { RecipeFormComponent } from './pages/entity/recipe/recipe-form/recipe-form.component';
 import { RecipeInterfaceComponent } from './pages/entity/recipe/recipe-interface/recipe-interface.component';
+import { RecipeBookDetailComponent } from './pages/entity/recipeBook/recipe-book-detail/recipe-book-detail.component';
+import { RecipeBookFormComponent } from './pages/entity/recipeBook/recipe-book-form/recipe-book-form.component';
+import { RecipeBookListComponent } from './pages/entity/recipeBook/recipe-book-list/recipe-book-list.component';
 import { UserDetailComponent } from './pages/entity/user/user-detail/user-detail.component';
 import { UserEditComponent } from './pages/entity/user/user-edit/user-edit.component';
 import { UserInterfaceComponent } from './pages/entity/user/user-interface/user-interface.component';
@@ -25,7 +28,10 @@ const routes: Routes = [
       { path: 'register', component: UserRegisterComponent },
       { path: 'user-edit/:id', component: UserEditComponent},
       { path: 'user-edit', component: UserEditComponent},
-      { path: 'user-detail/:id', component:UserDetailComponent},
+      { path: 'user-detail/:id', 
+        component:UserDetailComponent,
+        children:[{path:':recipeId', component:RecipeBookDetailComponent}]
+      },
       { 
         path: 'user-interface', 
         component:UserInterfaceComponent, 
@@ -42,7 +48,13 @@ const routes: Routes = [
         component:IngredientFormComponent,
         children:[{path:'ingredient-list', pathMatch: 'full', component:IngredientListComponent}]
       },
-      { path: 'ingredient-form/:id', component:IngredientFormComponent }
+      { path: 'ingredient-form/:id', component:IngredientFormComponent },
+      { path: 'recipe-book-form', component:RecipeBookFormComponent},
+      { path: 'recipe-book-form/:id', component:RecipeBookFormComponent},
+      
+      { path: 'recipe-book-list', component:RecipeBookListComponent},
+      
+
       
     ]
   },

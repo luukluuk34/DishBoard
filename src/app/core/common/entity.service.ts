@@ -43,6 +43,8 @@ export class EntityService<T extends Entity> {
             return this.http.put<T>(endpoint, param, {headers:header}).pipe(tap(console.log),catchError(this.handleError));
         }
 
+        
+
         public handleError(error: HttpErrorResponse) {
             let errorMsg;
             if (error.error instanceof ErrorEvent) {

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../../user/authentication.service';
 import { User } from '../../user/user.model';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -13,14 +12,24 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
   recipeList: Recipe[] = [];
+  addButtonToggle:Boolean = true;
 
-
-  constructor(private route :ActivatedRoute, private recipeService: RecipeService) { 
+  @Output() addRecipeEvent = new EventEmitter<{Recipe: Recipe,Chapter:number}>();
+  @Input() recipeChapter = 0;
+  constructor(private route :Router, private recipeService: RecipeService) { 
   
   }
 
   ngOnInit(): void {
     console.log("GetList", this.recipeService.getList().subscribe((results) => this.recipeList = results));
+
+    if(this.route.url == '/recipe-interface'){
+      this.addButtonToggle = false;
+    }
+  }
+
+  selectRecipe(recipe:Recipe){
+    this.addRecipeEvent.emit({Recipe:recipe, Chapter:this.recipeChapter});
   }
 
 

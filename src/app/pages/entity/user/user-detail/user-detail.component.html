@@ -4,20 +4,40 @@
     <h3>About: {{user.about}}</h3>
     <h4>Date of birth: {{user.dateOfBirth}}</h4>
     <a *ngIf="loggedInUser._id == user._id || loggedInUser.role == 'ADMIN'" routerLink="/user-edit/{{user._id}}">Edit profile</a>
-    <button *ngIf="loggedInUser._id != user._id" class="btn btn-primary" (click)="followPerson()">Follow User</button>
-
-    <table>
-        <thead>
-            <th>Following: </th>
-        </thead>
-        <tbody>
-            <div *ngFor="let user of userList">
-                <td>
-                    {{user.firstName}} {{user.lastName}}
-                </td>
+    <br>
+    <br>
+    <button *ngIf="loggedInUser._id == user._id" class="btn btn-primary" class="btn btn-primary" routerLink="/recipe-book-form">Add a recipe Book</button>
+    <br>
+    <br>
+    <div *ngFor="let d of recipeBooks">
+        <br>
+        <button class="btn btn-primary" routerLink="/user-detail/{{user._id}}/{{d._id}}"> click to look at Re:  <b>{{d.title}}</b> </button><button *ngIf="loggedInUser.role == 'ADMIN' || loggedInUser._id == d.user.toString()" (click)="editRecipebook(d)" class="btn btn-warning">Edit</button>  <button *ngIf="loggedInUser.role == 'ADMIN' || loggedInUser._id == d.user.toString()" (click)="deleteRecipebook(d)" class="btn btn-danger">X</button> 
+        <div *ngIf="loggedInUser._id != d.user.toString()">
+            <div *ngFor="let dr of followedBooks">
+                <div *ngIf="dr.title != d.title">
+                    <a (click)="followRecipe(d)" class="btn btn-warning">follow Recipe book</a>
+                </div>
+                <div *ngIf="dr.title == d.title">
+                    <a (click)="unFollowRecipe(d)" class="btn btn-danger">unfollow Recipe book</a>
+                </div>
             </div>
-        </tbody>
-    </table>
+            <div *ngIf="followedBooks.length == 0">
+                <a (click)="followRecipe(d)" class="btn btn-warning">follow Recipe book</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="loggedInUser._id == user._id">
+        <div>Followed Recipes:</div>
+        <div *ngFor="let d of followedBooks">
+            <button class="btn btn-primary" routerLink="/user-detail/{{user._id}}/{{d._id}}"> click to look at Recipe Book:  <b>{{d.title}}</b>  </button> 
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <router-outlet></router-outlet>
+    
 </div>
 
 

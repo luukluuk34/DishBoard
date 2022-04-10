@@ -28,6 +28,10 @@ import { RecipeService } from './pages/entity/recipe/recipe.service';
 import { IngredientListComponent } from './pages/entity/ingredient/ingredient-list/ingredient-list.component';
 import { IngredientFormComponent } from './pages/entity/ingredient/ingredient-form/ingredient-form.component';
 import { IngredientService } from './pages/entity/ingredient/ingredient.service';
+import { RecipeBookFormComponent } from './pages/entity/recipeBook/recipe-book-form/recipe-book-form.component';
+import { RecipeBookListComponent } from './pages/entity/recipeBook/recipe-book-list/recipe-book-list.component';
+import { RecipeBookDetailComponent } from './pages/entity/recipeBook/recipe-book-detail/recipe-book-detail.component';
+import { RecipeBookService } from './pages/entity/recipeBook/recipeBook.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,9 @@ import { IngredientService } from './pages/entity/ingredient/ingredient.service'
     UserRegisterComponent,
     IngredientListComponent,
     IngredientFormComponent,
+    RecipeBookFormComponent,
+    RecipeBookListComponent,
+    RecipeBookDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,7 @@ import { IngredientService } from './pages/entity/ingredient/ingredient.service'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthenticationService, UserService, RecipeService,IngredientService],
+  providers: [AuthenticationService, UserService, RecipeService,IngredientService, RecipeBookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

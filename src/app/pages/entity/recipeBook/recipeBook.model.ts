@@ -8,7 +8,7 @@ export class RecipeBook extends Entity{
     chapters:Chapter[];
     user:User;
 
-    constructor(id = 0, title = "", about = "", chapters:Chapter[],user:User){
+    constructor(id = 0, title = "", about = "", chapters:Chapter[] = [],user:User = new User()){
         super(id);
         this.title = title;
         this.about = about;
@@ -22,7 +22,7 @@ export class Chapter extends Entity {
     chapterIntro:String;
     recipeList:Recipe[];
     
-    constructor(id = 0, chapterTitle = "", chapterIntro = "", recipeList:Recipe[]){
+    constructor(id = 0, chapterTitle = "", chapterIntro = "", recipeList:Recipe[] = []){
         super(id);
         this.chapterTitle = chapterTitle;
         this.chapterIntro = chapterIntro;

@@ -1,0 +1,49 @@
+<h1>Create your own recipe book</h1>
+<div class="row">
+    <form class="form col-4" (ngSubmit)="onSubmit()" [formGroup]="addRecipeBookForm">
+        <label for="title"> Recipe Book Title: </label>
+        <input class="form-control" type="string" formControlName="title" placeholder="Title Recipe book" />
+        <label for="about">About:</label>
+        <textarea class="form-control" type="string" formControlName="about" placeholder="About Recipe book"></textarea>
+
+        <br>
+        <button class="btn btn-danger" (click)="addChapter()">Add Extra Chapter</button>
+        <br>
+        <div formArrayName="chapters">
+            <div *ngFor="let d of chapters.controls; let i = index">
+                <br>
+                <h4>Chapter {{i + 1}}</h4>
+                <div formGroupName="{{i}}">
+                    <label for="chapterTitle">Chapter Title:</label>
+                    <input class="form-control" type="string" formControlName="chapterTitle"
+                        placeholder="Chapter Title" />
+                    <br>
+                    <label for="chapterIntro">Chapter Intro</label>
+                    <textarea class="form-control" type="string" formControlName="chapterIntro"
+                        placeholder="Chapter Intro"></textarea>
+                    <br>
+                    <label>Recipes</label>
+                    <br>
+                    <button type="button" (click)="openRecipeList(i)" class="btn btn-success">add</button>
+                    <div *ngFor="let r of getRecipes(i).controls; let j = index">
+                        <div>
+                            <h5>{{r.value.name}} <span style="color:red" (click)="removeRecipe(i,j,r.value)">Delete</span></h5> 
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="chapters.length > 1">
+                <br>
+                <button type="button" (click)="deleteChapter(chapters.length - 1)" class="btn btn-danger">Delete
+                    previous chapter</button>
+            </div>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary" [disabled]="addRecipeBookForm.invalid">Submit</button>
+    </form>
+    <div class="col-1"></div>
+    <div class="col-7" *ngIf="isRecipeListOpen">
+        <app-recipe-list (addRecipeEvent)="addRecipe($event)" [recipeChapter]="currentChapterIndex"></app-recipe-list>
+    </div>
+</div>
